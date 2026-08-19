@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Harshu ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, #35134f 0%, #170d25 45%, #09070d 100%);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.screen {
+  width: 100%;
+  max-width: 650px;
+  min-height: 500px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 0.7s ease;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.content {
+  width: 100%;
+}
+
+h1 {
+  font-size: clamp(2rem, 8vw, 4rem);
+  margin-bottom: 25px;
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 6vw, 2.7rem);
+  margin-bottom: 22px;
+}
+
+p {
+  font-size: clamp(1.05rem, 4vw, 1.35rem);
+  line-height: 1.8;
+  margin: 10px 0;
+}
+
+.small {
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+.emoji {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  padding: 13px 24px;
+  margin: 10px 6px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff6fae, #a855f7);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 8px 25px rgba(168, 85, 247, 0.25);
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.secondary {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: none;
+}
+
+.choice-container {
+  margin-top: 25px;
+}
+
+.card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  padding: 25px;
+  margin: 12px 0;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+}
+
+.case-file {
+  text-align: left;
+  font-family: monospace;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.case-file p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.divider {
+  width: 80px;
+  height: 2px;
+  background: #ff7ab8;
+  margin: 22px auto;
+  opacity: 0.7;
+}
+
+.highlight {
+  color: #ff9ac8;
+  font-weight: 700;
+}
+
+.heart {
+  color: #ff78b5;
+}
+
+input {
+  width: min(300px, 90%);
+  padding: 15px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.3);
+  color: white;
+  text-align: center;
+  font-size: 1.1rem;
+  outline: none;
+  margin: 20px 0 10px;
+}
+
+input:focus {
+  border-color: #ff72b2;
+  box-shadow: 0 0 20px rgba(255,114,178,0.2);
+}
+
+.error {
+  color: #ff8f9f;
+  margin-top: 10px;
+  min-height: 25px;
+}
+
+.success {
+  color: #8fffc1;
+}
+
+.birthday-title {
+  font-size: clamp(2.2rem, 9vw, 4.5rem);
+  background: linear-gradient(90deg, #ff9ecb, #ffd1e5, #c59cff);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: glow 2s infinite alternate;
+}
+
+.back-button {
+  margin-top: 35px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.final-message {
+  font-size: clamp(2rem, 8vw, 4rem);
+  line-height: 1.3;
+  color: #ff9ac8;
+  text-shadow: 0 0 25px rgba(255,100,170,0.35);
+}
+
+.final-sub {
+  font-size: clamp(1.4rem, 6vw, 2.5rem);
+  margin-top: 15px;
+}
+
+.firework {
+  position: fixed;
+  pointer-events: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1.2s ease-out forwards;
+  z-index: 9999;
+}
+
+.confetti {
+  position: fixed;
+  width: 9px;
+  height: 14px;
+  top: -20px;
+  z-index: 9999;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 5px rgba(255,130,190,0.2));
+  }
+  to {
+    filter: drop-shadow(0 0 25px rgba(255,130,190,0.7));
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0,0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x),var(--y)) scale(0);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  #app {
+    padding: 18px;
+  }
+
+  .screen {
+    min-height: 560px;
+  }
+
+  button {
+    width: min(90%, 300px);
+    margin: 7px auto;
+  }
+
+  .choice-container {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<!-- ================= PART 1 ================= -->
+
+<section class="screen active" id="s1">
+  <div class="content">
+    <div class="emoji">👀</div>
+    <h1>Wait.</h1>
+    <button onclick="show('s2')">What? 👀</button>
+  </div>
+</section>
+
+<section class="screen" id="s2">
+  <div class="content">
+    <h2>How did you even get here?</h2>
+    <button onclick="show('s3')">Get where?</button>
+  </div>
+</section>
+
+<section class="screen" id="s3">
+  <div class="content">
+    <h2>Into my life. 😌</h2>
+    <div class="choice-container">
+      <button onclick="luckChoice(true)">Pure luck 🍀</button>
+      <button onclick="luckChoice(false)">Obviously planned 😎</button>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="s4">
+  <div class="content">
+    <h2 id="luckTitle"></h2>
+    <p id="luckText"></p>
+    <button onclick="show('s5')">Continue →</button>
+  </div>
+</section>
+
+<!-- ================= PART 2 ================= -->
+
+<section class="screen" id="s5">
+  <div class="content">
+    <h2>And then there was Harshu.</h2>
+    <p>Also known as Ras Malai.</p>
+    <p>Also occasionally referred to as…</p>
+    <h2 class="highlight">Mahan Insaan™ 😌</h2>
+    <p>Honestly, you have more names than necessary.</p>
+    <p>But somehow…</p>
+    <p>every single one fits.</p>
+
+    <button onclick="show('s6')">Continue →</button>
+  </div>
+</section>
+
+<section class="screen" id="s6">
+  <div class="content">
+    <h2>Pick your official title.</h2>
+
+    <button onclick="titleChoice('Harshu')">Harshu 🎀</button>
+    <button onclick="titleChoice('Ras Malai')">Ras Malai 🍮</button>
+    <button onclick="titleChoice('Mahan Insaan')">Mahan Insaan 👑</button>
+
+    <div id="titleResponse"></div>
+  </div>
+</section>
+
+<!-- ================= PART 3 ================= -->
+
+<section class="screen" id="s7">
+  <div class="content">
+    <div class="emoji">🕵️</div>
+    <h2>Okay.</h2>
+    <p>I did some research.</p>
+    <button onclick="show('s8')">Research on what? 👀</button>
+  </div>
+</section>
+
+<section class="screen" id="s8">
+  <div class="content">
+    <div class="card case-file">
+      <h2>🗂️ CASE #0820</h2>
+      <p><b>Subject:</b> Harshu</p>
+      <p><b>Alias:</b> Ras Malai</p>
+      <p><b>Classification:</b> Mahan Insaan™</p>
+      <p><b>Status:</b> Extremely suspicious</p>
+    </div>
+
+    <button onclick="show('s9')">Open case file →</button>
+  </div>
+</section>
+
+<section class="screen" id="s9">
+  <div class="content">
+    <h2>🔍 Finding #01</h2>
+
+    <p>
+      <b>“Subject appears to be…”</b>
+    </p>
+
+    <p class="highlight">
+      way too good at making random conversations interesting.
+    </p>
+
+    <div class="card">
+      Evidence:<br>
+      <b>Multiple incidents recorded.</b>
+    </div>
+
+    <button onclick="findingOne()">Sounds made up.</button>
+
+    <div id="findingOneResponse"></div>
+  </div>
+</section>
+
+<section class="screen" id="s10">
+  <div class="content">
+    <h2>🔍 Finding #02</h2>
+
+    <p><b>“Subject displays unusually high levels of…”</b></p>
+
+    <h2 class="highlight">randomness.</h2>
+
+    <div class="card">
+      Normal conversation
+      <br>↓<br>
+      Harshu enters
+      <br>↓<br>
+      <b>Absolute nonsense</b>
+    </div>
+
+    <p><b>“Coincidence?”</b></p>
+    <p>“I think not.” 🧐</p>
+
+    <button onclick="show('s11')">Next evidence →</button>
+  </div>
+</section>
+
+<section class="screen" id="s11">
+  <div class="content">
+    <h2>🔍 Finding #03</h2>
+
+    <p><b>“Subject has somehow become…”</b></p>
+
+    <h2 class="highlight">surprisingly difficult to ignore.</h2>
+
+    <p>Researchers remain confused.</p>
+
+    <button onclick="show('s12')">How serious is it?</button>
+  </div>
+</section>
+
+<section class="screen" id="s12">
+  <div class="content">
+    <p>Pretty serious.</p>
+
+    <p>At this point, you're basically a recurring character. 😭</p>
+
+    <button onclick="show('s13')">Continue →</button>
+  </div>
+</section>
+
+<section class="screen" id="s13">
+  <div class="content">
+    <h2>🔒 Final Case Status</h2>
+
+    <div class="card case-file">
+      <p><b>CASE:</b> Unsolved</p>
+      <p><b>Subject:</b> Still suspicious</p>
+      <p><b>Escape:</b> Impossible</p>
+      <p><b>Status:</b> Unfortunately permanent. 😌</p>
+    </div>
+
+    <button onclick="show('s14')">Close case file →</button>
+  </div>
+</section>
+
+<section class="screen" id="s14">
+  <div class="content">
+    <h2>Wait…</h2>
+    <p>We're not done.</p>
+    <button onclick="show('s15')">Continue →</button>
+  </div>
+</section>
+
+<!-- ================= PART 4 ================= -->
+
+<section class="screen" id="s15">
+  <div class="content">
+    <h2>Anyway…</h2>
+    <p>Enough evidence for today. 😌</p>
+  </div>
+  <button onclick="show('s16')">Continue →</button>
+</section>
+
+<section class="screen" id="s16">
+  <div class="content">
+    <p>There's actually something I've been thinking about.</p>
+    <button onclick="show('s17')">What? 👀</button>
+  </div>
+</section>
+
+<section class="screen" id="s17">
+  <div class="content">
+    <p>We met completely by chance.</p>
+    <p>No planning.</p>
+    <p>No expectations.</p>
+    <p>Just one random moment that could've easily meant nothing.</p>
+
+    <button onclick="show('s18')">Continue →</button>
+  </div>
+</section>
+
+<section class="screen" id="s18">
+  <div class="content">
+    <h1>But it didn't.</h1>
+    <button onclick="show('s19')">Continue →</button>
+  </div>
+</section>
+
+<section class="screen" id="s19">
+  <div class="content">
+    <p>Because then came the conversations.</p>
+    <p>The random ones.</p>
+    <p>The stupid ones.</p>
+    <p>The ones that somehow lasted way longer than they were supposed to. 😭</p>
+
+    <button onclick="show('s20')">Continue →</button>
+  </div>
+</section>
+
+<section class="screen" id="s20">
+  <div class="content">
+    <p>And somewhere between all of that…</p>
+
+    <h2 class="highlight">
+      You stopped feeling like a random person I happened to meet.
+    </h2>
+
+    <button onclick="show('s21')">Continue →</button>
+  </div>
+</section>
+
+<section class="screen" id="s21">
+  <div class="content">
+    <p>You just became…</p>
+    <h1>Harshu.</h1>
+
+    <div class="divider"></div>
+
+    <p>Yeah, I know.</p>
+    <p>Very profound.</p>
+    <p>Please hold your applause. 😌</p>
+
+    <button onclick="show('s22')">Continue →</button>
+  </div>
+</section>
+
+<section class="screen" id="s22">
+  <div class="content">
+    <p>But honestly…</p>
+    <h2>I'm really glad that random day happened.</h2>
+
+    <button onclick="show('s23')">Okay… there's more? 👀</button>
+  </div>
+</section>
+
+<!-- ================= PART 5 ================= -->
+
+<section class="screen" id="s23">
+  <div class="content">
+    <p>You know Harshu…</p>
+
+    <h2>Kaafi unfair hai ye.</h2>
+
+    <p>
+      How are you supposed to be
+      <b>itni pyaari and cute</b>
+      and still expect me to behave normally around you?
+    </p>
+
+    <h2>NAH!! Hehe 😌</h2>
+
+    <p>
+      Is point pe toh I'll definitely blame you
+      <b>for the fact that you're my favourite.</b> ❤️
+    </p>
+
+    <button onclick="show('s24')">Continue →</button>
+  </div>
+</section>
+
+<!-- ================= PART 6 ================= -->
+
+<section class="screen" id="s24">
+  <div class="content">
+    <h1>Wait a minute…</h1>
+
+    <p>Why is all this happening today? 👀</p>
+
+    <h2>Is there something special about today?</h2>
+
+    <button onclick="show('s25')">Hmm… what could it be?</button>
+  </div>
+</section>
+
+<section class="screen" id="s25">
+  <div class="content">
+    <h2>Okay, one last question… 👀</h2>
+
+    <p><b>Mahan Insaan ka janam kab hua tha?</b> 🎂</p>
+
+    <input
+      id="birthdayInput"
+      type="text"
+      placeholder="20 August"
+      autocomplete="off"
+    >
+
+    <br>
+
+    <button onclick="checkBirthday()">Submit →</button>
+
+    <div class="error" id="birthdayError"></div>
+  </div>
+</section>
+
+<!-- ================= PART 7 ================= -->
+
+<section class="screen" id="s26">
+  <div class="content">
+
+    <div class="emoji">🎉</div>
+
+    <h1 class="birthday-title">
+      HAPPY BIRTHDAY,<br>
+      HARSHITA JI! 🎂
+    </h1>
+
+    <div class="divider"></div>
+
+    <p>
+      To the girl who somehow went from being a completely random person
+      to someone who became genuinely special to me…
+    </p>
+
+    <p>
+      <b>Kanha ji ki kripa hamesha aap pe bani rahe.</b> 🦚
+    </p>
+
+    <p>
+      I hope this year brings you all the happiness, peace, success,
+      and little moments that make you smile for no reason.
+    </p>
+
+    <p>
+      Stay the same <b>pyaari and absolutely wonderful Harshu</b>
+      that you are. ❤️
+    </p>
+
+    <p>
+      <b>You deserve a really, really good year.</b> ✨
+    </p>
+
+    <button onclick="show('s27')">
+      Wait… there's one more thing 👀
+    </button>
+
+  </div>
+</section>
+
+<!-- ================= PART 8 ================= -->
+
+<section class="screen" id="s27">
+  <div class="content">
+    <h2>Wait…</h2>
+    <p>There's actually one more thing.</p>
+
+    <button onclick="show('s28')">What? 👀</button>
+  </div>
+</section>
+
+<section class="screen" id="s28">
+  <div class="content">
+    <p>I know I said you're one of my favourites…</p>
+
+    <button onclick="show('s29')">And?</button>
+  </div>
+</section>
+
+<section class="screen" id="s29">
+  <div class="content">
+
+    <p>But honestly…</p>
+
+    <h2 class="highlight">
+      I think you're a little more special to me
+      than I usually let you know.
+    </h2>
+
+    <button class="back-button" onclick="finalReveal()">
+      Go back ←
+    </button>
+
+  </div>
+</section>
+
+<!-- FINAL -->
+
+<section class="screen" id="finalScreen">
+  <div class="content">
+
+    <div class="emoji">😌</div>
+
+    <h1 class="final-message">
+      Too late now :)
+    </h1>
+
+    <p class="final-sub">
+      You're stuck with me forever. ❤️
+    </p>
+
+  </div>
+</section>
+
+</div>
+
+<script>
+
+/* ================= NAVIGATION ================= */
+
+function show(id) {
+
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  const next = document.getElementById(id);
+
+  if (next) {
+    next.classList.add("active");
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+/* ================= PART 1 ================= */
+
+function luckChoice(isLuck) {
+
+  document.getElementById("luckTitle").textContent =
+    isLuck ? "Exactly." : "Sure.";
+
+  document.getElementById("luckText").textContent =
+    isLuck
+      ? "Suspiciously lucky, though. 👀"
+      : "Keep telling yourself that. 😭";
+
+  show("s4");
+}
+
+
+/* ================= PART 2 ================= */
+
+function titleChoice(title) {
+
+  const response = document.getElementById("titleResponse");
+
+  let text = "";
+
+  if (title === "Harshu") {
+    text = "Cute name.";
+  }
+
+  if (title === "Ras Malai") {
+    text = "Sweet.<br>Obviously.";
+  }
+
+  if (title === "Mahan Insaan") {
+    text = "Okay, don't let this get to your head. 😭";
+  }
+
+  response.innerHTML = `
+    <div class="card">
+      ${text}
+    </div>
+    <button onclick="show('s7')">Next →</button>
+  `;
+}
+
+
+/* ================= PART 3 ================= */
+
+function findingOne() {
+
+  const response =
+    document.getElementById("findingOneResponse");
+
+  response.innerHTML = `
+    <div class="card">
+      Objection denied. 😌
+    </div>
+
+    <button onclick="show('s10')">
+      Continue →
+    </button>
+  `;
+}
+
+
+/* ================= BIRTHDAY CHECK ================= */
+
+function checkBirthday() {
+
+  const input =
+    document.getElementById("birthdayInput");
+
+  const error =
+    document.getElementById("birthdayError");
+
+  const answer =
+    input.value.trim().toLowerCase().replace(/\s+/g, " ");
+
+  const validAnswers = [
+    "20 august",
+    "20 august",
+    "20/08",
+    "20-08",
+    "20.08",
+    "20 08"
+  ];
+
+  if (validAnswers.includes(answer)) {
+
+    error.textContent = "";
+
+    show("s26");
+
+    launchCelebration();
+
+  } else {
+
+    error.textContent =
+      "Hmm… that's not it 😭 Try again.";
+  }
+}
+
+
+/* ================= CONFETTI ================= */
+
+function launchCelebration() {
+
+  for (let i = 0; i < 180; i++) {
+
+    const piece =
+      document.createElement("div");
+
+    piece.className = "confetti";
+
+    piece.style.left =
+      Math.random() * 100 + "vw";
+
+    piece.style.animationDuration =
+      (2.5 + Math.random() * 3) + "s";
+
+    piece.style.animationDelay =
+      Math.random() * 1.5 + "s";
+
+    piece.style.background =
+      `hsl(${Math.random() * 360}, 90%, 70%)`;
+
+    piece.style.transform =
+      `rotate(${Math.random() * 360}deg)`;
+
+    document.body.appendChild(piece);
+
+    setTimeout(() => {
+      piece.remove();
+    }, 6500);
+  }
+
+  launchFireworks();
+}
+
+
+/* ================= FIREWORKS ================= */
+
+function launchFireworks() {
+
+  for (let burst = 0; burst < 8; burst++) {
+
+    setTimeout(() => {
+
+      const centerX =
+        10 + Math.random() * 80;
+
+      const centerY =
+        10 + Math.random() * 50;
+
+      for (let i = 0; i < 35; i++) {
+
+        const particle =
+          document.createElement("div");
+
+        particle.className = "firework";
+
+        particle.style.left =
+          centerX + "vw";
+
+        particle.style.top =
+          centerY + "vh";
+
+        const angle =
+          (Math.PI * 2 * i) / 35;
+
+        const distance =
+          60 + Math.random() * 100;
+
+        particle.style.setProperty(
+          "--x",
+          Math.cos(angle) * distance + "px"
+        );
+
+        particle.style.setProperty(
+          "--y",
+          Math.sin(angle) * distance + "px"
+        );
+
+        particle.style.background =
+          `hsl(${Math.random() * 360}, 100%, 70%)`;
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 1300);
+      }
+
+    }, burst * 350);
+  }
+}
+
+
+/* ================= FINAL REVEAL ================= */
+
+function finalReveal() {
+
+  show("finalScreen");
+
+  launchFireworks();
+}
+
+</script>
+
+</body>
+  </html>
