@@ -142,6 +142,10 @@ button:active {
   font-weight: 700;
 }
 
+.heart {
+  color: #ff78b5;
+}
+
 input {
   width: min(300px, 90%);
   padding: 15px 20px;
@@ -160,14 +164,14 @@ input:focus {
   box-shadow: 0 0 20px rgba(255,114,178,0.2);
 }
 
-input::placeholder {
-  color: rgba(255,255,255,0.45);
-}
-
 .error {
   color: #ff8f9f;
   margin-top: 10px;
   min-height: 25px;
+}
+
+.success {
+  color: #8fffc1;
 }
 
 .birthday-title {
@@ -221,7 +225,6 @@ input::placeholder {
     opacity: 0;
     transform: translateY(18px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -232,7 +235,6 @@ input::placeholder {
   from {
     filter: drop-shadow(0 0 5px rgba(255,130,190,0.2));
   }
-
   to {
     filter: drop-shadow(0 0 25px rgba(255,130,190,0.7));
   }
@@ -250,7 +252,6 @@ input::placeholder {
     transform: translate(0,0) scale(1);
     opacity: 1;
   }
-
   100% {
     transform: translate(var(--x),var(--y)) scale(0);
     opacity: 0;
@@ -258,7 +259,6 @@ input::placeholder {
 }
 
 @media (max-width: 500px) {
-
   #app {
     padding: 18px;
   }
@@ -283,9 +283,7 @@ input::placeholder {
 
 <div id="app">
 
-<!-- =====================================================
-     PART 1
-===================================================== -->
+<!-- ================= PART 1 ================= -->
 
 <section class="screen active" id="s1">
   <div class="content">
@@ -295,7 +293,6 @@ input::placeholder {
   </div>
 </section>
 
-
 <section class="screen" id="s2">
   <div class="content">
     <h2>How did you even get here?</h2>
@@ -303,161 +300,79 @@ input::placeholder {
   </div>
 </section>
 
-
 <section class="screen" id="s3">
   <div class="content">
     <h2>Into my life. 😌</h2>
-
     <div class="choice-container">
-
-      <button onclick="luckChoice(true)">
-        Pure luck 🍀
-      </button>
-
-      <button onclick="luckChoice(false)">
-        Obviously planned 😎
-      </button>
-
+      <button onclick="luckChoice(true)">Pure luck 🍀</button>
+      <button onclick="luckChoice(false)">Obviously planned 😎</button>
     </div>
   </div>
 </section>
-
 
 <section class="screen" id="s4">
   <div class="content">
-
     <h2 id="luckTitle"></h2>
-
     <p id="luckText"></p>
-
-    <button onclick="show('s5')">
-      Continue →
-    </button>
-
+    <button onclick="show('s5')">Continue →</button>
   </div>
 </section>
 
-
-<!-- =====================================================
-     PART 2
-===================================================== -->
+<!-- ================= PART 2 ================= -->
 
 <section class="screen" id="s5">
-
   <div class="content">
-
     <h2>And then there was Harshu.</h2>
-
     <p>Also known as Ras Malai.</p>
-
     <p>Also occasionally referred to as…</p>
-
-    <h2 class="highlight">
-      Mahan Insaan™ 😌
-    </h2>
-
+    <h2 class="highlight">Mahan Insaan™ 😌</h2>
     <p>Honestly, you have more names than necessary.</p>
-
     <p>But somehow…</p>
-
     <p>every single one fits.</p>
 
-    <button onclick="show('s6')">
-      Continue →
-    </button>
-
+    <button onclick="show('s6')">Continue →</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s6">
-
   <div class="content">
-
     <h2>Pick your official title.</h2>
 
-    <button onclick="titleChoice('Harshu')">
-      Harshu 🎀
-    </button>
-
-    <button onclick="titleChoice('Ras Malai')">
-      Ras Malai 🍮
-    </button>
-
-    <button onclick="titleChoice('Mahan Insaan')">
-      Mahan Insaan 👑
-    </button>
+    <button onclick="titleChoice('Harshu')">Harshu 🎀</button>
+    <button onclick="titleChoice('Ras Malai')">Ras Malai 🍮</button>
+    <button onclick="titleChoice('Mahan Insaan')">Mahan Insaan 👑</button>
 
     <div id="titleResponse"></div>
-
   </div>
-
 </section>
 
-
-<!-- =====================================================
-     PART 3
-===================================================== -->
+<!-- ================= PART 3 ================= -->
 
 <section class="screen" id="s7">
-
   <div class="content">
-
     <div class="emoji">🕵️</div>
-
     <h2>Okay.</h2>
-
     <p>I did some research.</p>
-
-    <button onclick="show('s8')">
-      Research on what? 👀
-    </button>
-
+    <button onclick="show('s8')">Research on what? 👀</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s8">
-
   <div class="content">
-
     <div class="card case-file">
-
       <h2>🗂️ CASE #0820</h2>
-
-      <p>
-        <b>Subject:</b> Harshu
-      </p>
-
-      <p>
-        <b>Alias:</b> Ras Malai
-      </p>
-
-      <p>
-        <b>Classification:</b> Mahan Insaan™
-      </p>
-
-      <p>
-        <b>Status:</b> Extremely suspicious
-      </p>
-
+      <p><b>Subject:</b> Harshu</p>
+      <p><b>Alias:</b> Ras Malai</p>
+      <p><b>Classification:</b> Mahan Insaan™</p>
+      <p><b>Status:</b> Extremely suspicious</p>
     </div>
 
-    <button onclick="show('s9')">
-      Open case file →
-    </button>
-
+    <button onclick="show('s9')">Open case file →</button>
   </div>
-
 </section>
 
-
 <section class="screen" id="s9">
-
   <div class="content">
-
     <h2>🔍 Finding #01</h2>
 
     <p>
@@ -469,373 +384,175 @@ input::placeholder {
     </p>
 
     <div class="card">
-
       Evidence:<br>
-
       <b>Multiple incidents recorded.</b>
-
     </div>
 
-    <button onclick="findingOne()">
-      Sounds made up.
-    </button>
+    <button onclick="findingOne()">Sounds made up.</button>
 
     <div id="findingOneResponse"></div>
-
   </div>
-
 </section>
-
 
 <section class="screen" id="s10">
-
   <div class="content">
-
     <h2>🔍 Finding #02</h2>
 
-    <p>
-      <b>“Subject displays unusually high levels of…”</b>
-    </p>
+    <p><b>“Subject displays unusually high levels of…”</b></p>
 
-    <h2 class="highlight">
-      randomness.
-    </h2>
+    <h2 class="highlight">randomness.</h2>
 
     <div class="card">
-
       Normal conversation
       <br>↓<br>
-
       Harshu enters
-
       <br>↓<br>
-
-      <b>Absolutely lovable ❤️</b>
-
+      <b>Absolute nonsense</b>
     </div>
 
-    <p>
-      <b>“Coincidence?”</b>
-    </p>
+    <p><b>“Coincidence?”</b></p>
+    <p>“I think not.” 🧐</p>
 
-    <p>
-      “I think not.” 🧐
-    </p>
-
-    <button onclick="show('s11')">
-      Next evidence →
-    </button>
-
+    <button onclick="show('s11')">Next evidence →</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s11">
-
   <div class="content">
-
     <h2>🔍 Finding #03</h2>
 
-    <p>
-      <b>“Subject has somehow become…”</b>
-    </p>
+    <p><b>“Subject has somehow become…”</b></p>
 
-    <h2 class="highlight">
-      surprisingly difficult to ignore.
-    </h2>
+    <h2 class="highlight">surprisingly difficult to ignore.</h2>
 
-    <p>
-      Researchers remain confused.
-    </p>
+    <p>Researchers remain confused.</p>
 
-    <button onclick="show('s12')">
-      How serious is it?
-    </button>
-
+    <button onclick="show('s12')">How serious is it?</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s12">
-
   <div class="content">
-
     <p>Pretty serious.</p>
 
-    <p>
-      At this point, you're basically a recurring character. 😭
-    </p>
+    <p>At this point, you're basically a recurring character. 😭</p>
 
-    <button onclick="show('s13')">
-      Continue →
-    </button>
-
+    <button onclick="show('s13')">Continue →</button>
   </div>
-
 </section>
 
-
 <section class="screen" id="s13">
-
   <div class="content">
-
     <h2>🔒 Final Case Status</h2>
 
     <div class="card case-file">
-
-      <p>
-        <b>CASE:</b> Unsolved
-      </p>
-
-      <p>
-        <b>Subject:</b> Still suspicious
-      </p>
-
-      <p>
-        <b>Escape:</b> Impossible
-      </p>
-
-      <p>
-        <b>Status:</b> Unfortunately permanent. 😌
-      </p>
-
+      <p><b>CASE:</b> Unsolved</p>
+      <p><b>Subject:</b> Still suspicious</p>
+      <p><b>Escape:</b> Impossible</p>
+      <p><b>Status:</b> Unfortunately permanent. 😌</p>
     </div>
 
-    <button onclick="show('s14')">
-      Close case file →
-    </button>
-
+    <button onclick="show('s14')">Close case file →</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s14">
-
   <div class="content">
-
     <h2>Wait…</h2>
-
     <p>We're not done.</p>
-
-    <button onclick="show('s15')">
-      Continue →
-    </button>
-
+    <button onclick="show('s15')">Continue →</button>
   </div>
-
 </section>
 
-
-<!-- =====================================================
-     PART 4
-===================================================== -->
+<!-- ================= PART 4 ================= -->
 
 <section class="screen" id="s15">
-
   <div class="content">
-
     <h2>Anyway…</h2>
-
-    <p>
-      Enough evidence for today. 😌
-    </p>
-
-    <button onclick="show('s16')">
-      Continue →
-    </button>
-
+    <p>Enough evidence for today. 😌</p>
   </div>
-
+  <button onclick="show('s16')">Continue →</button>
 </section>
-
 
 <section class="screen" id="s16">
-
   <div class="content">
-
-    <p>
-      There's actually something I've been thinking about.
-    </p>
-
-    <button onclick="show('s17')">
-      What? 👀
-    </button>
-
+    <p>There's actually something I've been thinking about.</p>
+    <button onclick="show('s17')">What? 👀</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s17">
-
   <div class="content">
+    <p>We met completely by chance.</p>
+    <p>No planning.</p>
+    <p>No expectations.</p>
+    <p>Just one random moment that could've easily meant nothing.</p>
 
-    <p>
-      We met completely by chance.
-    </p>
-
-    <p>
-      No planning.
-    </p>
-
-    <p>
-      No expectations.
-    </p>
-
-    <p>
-      Just one random moment that could've easily meant nothing.
-    </p>
-
-    <button onclick="show('s18')">
-      Continue →
-    </button>
-
+    <button onclick="show('s18')">Continue →</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s18">
-
   <div class="content">
-
-    <h1>
-      But it didn't.
-    </h1>
-
-    <button onclick="show('s19')">
-      Continue →
-    </button>
-
+    <h1>But it didn't.</h1>
+    <button onclick="show('s19')">Continue →</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s19">
-
   <div class="content">
+    <p>Because then came the conversations.</p>
+    <p>The random ones.</p>
+    <p>The stupid ones.</p>
+    <p>The ones that somehow lasted way longer than they were supposed to. 😭</p>
 
-    <p>
-      Because then came the conversations.
-    </p>
-
-    <p>
-      The random ones.
-    </p>
-
-    <p>
-      The stupid ones.
-    </p>
-
-    <p>
-      The ones that somehow lasted way longer than they were supposed to. 😭
-    </p>
-
-    <button onclick="show('s20')">
-      Continue →
-    </button>
-
+    <button onclick="show('s20')">Continue →</button>
   </div>
-
 </section>
 
-
 <section class="screen" id="s20">
-
   <div class="content">
-
-    <p>
-      And somewhere between all of that…
-    </p>
+    <p>And somewhere between all of that…</p>
 
     <h2 class="highlight">
       You stopped feeling like a random person I happened to meet.
     </h2>
 
-    <button onclick="show('s21')">
-      Continue →
-    </button>
-
+    <button onclick="show('s21')">Continue →</button>
   </div>
-
 </section>
 
-
 <section class="screen" id="s21">
-
   <div class="content">
-
-    <p>
-      You just became…
-    </p>
-
-    <h1>
-      Harshu.
-    </h1>
+    <p>You just became…</p>
+    <h1>Harshu.</h1>
 
     <div class="divider"></div>
 
-    <p>
-      Yeah, I know.
-    </p>
+    <p>Yeah, I know.</p>
+    <p>Very profound.</p>
+    <p>Please hold your applause. 😌</p>
 
-    <p>
-      Very profound.
-    </p>
-
-    <p>
-      Please hold your applause. 😌
-    </p>
-
-    <button onclick="show('s22')">
-      Continue →
-    </button>
-
+    <button onclick="show('s22')">Continue →</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s22">
-
   <div class="content">
+    <p>But honestly…</p>
+    <h2>I'm really glad that random day happened.</h2>
 
-    <p>
-      But honestly…
-    </p>
-
-    <h2>
-      I'm really glad that random day happened.
-    </h2>
-
-    <button onclick="show('s23')">
-      Okay… there's more? 👀
-    </button>
-
+    <button onclick="show('s23')">Okay… there's more? 👀</button>
   </div>
-
 </section>
 
-
-<!-- =====================================================
-     PART 5
-===================================================== -->
+<!-- ================= PART 5 ================= -->
 
 <section class="screen" id="s23">
-
   <div class="content">
+    <p>You know Harshu…</p>
 
-    <p>
-      You know Harshu...
-    </p>
-
-    <h2>
-      Kaafi unfair hai ye.
-    </h2>
+    <h2>Kaafi unfair hai ye.</h2>
 
     <p>
       How are you supposed to be
@@ -843,99 +560,58 @@ input::placeholder {
       and still expect me to behave normally around you?
     </p>
 
-    <h2>
-      Nah!! Hehe 😌
-    </h2>
+    <h2>NAH!! Hehe 😌</h2>
 
     <p>
       Is point pe toh I'll definitely blame you
       <b>for the fact that you're my favourite.</b> ❤️
     </p>
 
-    <button onclick="show('s24')">
-      Continue →
-    </button>
-
+    <button onclick="show('s24')">Continue →</button>
   </div>
-
 </section>
 
-
-<!-- =====================================================
-     PART 6
-===================================================== -->
+<!-- ================= PART 6 ================= -->
 
 <section class="screen" id="s24">
-
   <div class="content">
+    <h1>Wait a minute…</h1>
 
-    <h1>
-      Wait a minute…
-    </h1>
+    <p>Why is all this happening today? 👀</p>
 
-    <p>
-      Why is all this happening today? 👀
-    </p>
+    <h2>Is there something special about today?</h2>
 
-    <h2>
-      Is there something special about today?
-    </h2>
-
-    <button onclick="show('s25')">
-      Hmm… what could it be?
-    </button>
-
+    <button onclick="show('s25')">Hmm… what could it be?</button>
   </div>
-
 </section>
 
-
 <section class="screen" id="s25">
-
   <div class="content">
+    <h2>Okay, one last question… 👀</h2>
 
-    <h2>
-      Okay, one last question… 👀
-    </h2>
-
-    <p>
-      <b>Mahan Insaan ka janam kab hua tha?</b> 🎂
-    </p>
+    <p><b>Mahan Insaan ka janam kab hua tha?</b> 🎂</p>
 
     <input
       id="birthdayInput"
       type="text"
-      placeholder=""
+      placeholder="20 August"
       autocomplete="off"
     >
 
     <br>
 
-    <button onclick="checkBirthday()">
-      Submit →
-    </button>
+    <button onclick="checkBirthday()">Submit →</button>
 
-    <div
-      class="error"
-      id="birthdayError">
-    </div>
-
+    <div class="error" id="birthdayError"></div>
   </div>
-
 </section>
 
-
-<!-- =====================================================
-     PART 7
-===================================================== -->
+<!-- ================= PART 7 ================= -->
 
 <section class="screen" id="s26">
-
   <div class="content">
 
-    <div class="emoji">
-      🎉
-    </div>
+    <div class="emoji">🎉</div>
 
     <h1 class="birthday-title">
       HAPPY BIRTHDAY,<br>
@@ -950,9 +626,7 @@ input::placeholder {
     </p>
 
     <p>
-      <b>
-        Kanha ji ki kripa hamesha aap pe bani rahe.
-      </b> 🦚
+      <b>Kanha ji ki kripa hamesha aap pe bani rahe.</b> 🦚
     </p>
 
     <p>
@@ -961,17 +635,12 @@ input::placeholder {
     </p>
 
     <p>
-      Stay the same
-      <b>
-        pyaari and absolutely wonderful Harshu
-      </b>
+      Stay the same <b>pyaari and absolutely wonderful Harshu</b>
       that you are. ❤️
     </p>
 
     <p>
-      <b>
-        You deserve a really, really good year.
-      </b> ✨
+      <b>You deserve a really, really good year.</b> ✨
     </p>
 
     <button onclick="show('s27')">
@@ -979,87 +648,50 @@ input::placeholder {
     </button>
 
   </div>
-
 </section>
 
-
-<!-- =====================================================
-     PART 8
-===================================================== -->
+<!-- ================= PART 8 ================= -->
 
 <section class="screen" id="s27">
-
   <div class="content">
+    <h2>Wait…</h2>
+    <p>There's actually one more thing.</p>
 
-    <h2>
-      Wait…
-    </h2>
-
-    <p>
-      There's actually one more thing.
-    </p>
-
-    <button onclick="show('s28')">
-      What? 👀
-    </button>
-
+    <button onclick="show('s28')">What? 👀</button>
   </div>
-
 </section>
-
 
 <section class="screen" id="s28">
-
   <div class="content">
+    <p>I know I said you're one of my favourites…</p>
 
-    <p>
-      I know I said you're one of my favourites…
-    </p>
-
-    <button onclick="show('s29')">
-      And?
-    </button>
-
+    <button onclick="show('s29')">And?</button>
   </div>
-
 </section>
 
-
 <section class="screen" id="s29">
-
   <div class="content">
 
-    <p>
-      But honestly…
-    </p>
+    <p>But honestly…</p>
 
     <h2 class="highlight">
       I think you're a little more special to me
       than I usually let you know.
     </h2>
 
-    <button
-      class="back-button"
-      onclick="finalReveal()">
+    <button class="back-button" onclick="finalReveal()">
       Go back ←
     </button>
 
   </div>
-
 </section>
 
-
-<!-- =====================================================
-     FINAL
-===================================================== -->
+<!-- FINAL -->
 
 <section class="screen" id="finalScreen">
-
   <div class="content">
 
-    <div class="emoji">
-      😌
-    </div>
+    <div class="emoji">😌</div>
 
     <h1 class="final-message">
       Too late now :)
@@ -1070,29 +702,21 @@ input::placeholder {
     </p>
 
   </div>
-
 </section>
-
 
 </div>
 
-
 <script>
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* ================= NAVIGATION ================= */
 
 function show(id) {
 
-  document
-    .querySelectorAll(".screen")
-    .forEach(screen => {
-      screen.classList.remove("active");
-    });
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
 
-  const next =
-    document.getElementById(id);
+  const next = document.getElementById(id);
 
   if (next) {
     next.classList.add("active");
@@ -1102,41 +726,30 @@ function show(id) {
     top: 0,
     behavior: "smooth"
   });
-
 }
 
 
-/* =====================================================
-   PART 1
-===================================================== */
+/* ================= PART 1 ================= */
 
 function luckChoice(isLuck) {
 
-  document.getElementById("luckTitle")
-    .textContent =
-      isLuck ? "Exactly." : "Sure.";
+  document.getElementById("luckTitle").textContent =
+    isLuck ? "Exactly." : "Sure.";
 
-  document.getElementById("luckText")
-    .textContent =
-      isLuck
-        ? "Suspiciously lucky, though. 👀"
-        : "Keep telling yourself that. 😭";
+  document.getElementById("luckText").textContent =
+    isLuck
+      ? "Suspiciously lucky, though. 👀"
+      : "Keep telling yourself that. 😭";
 
   show("s4");
-
 }
 
 
-/* =====================================================
-   PART 2
-===================================================== */
+/* ================= PART 2 ================= */
 
 function titleChoice(title) {
 
-  const response =
-    document.getElementById(
-      "titleResponse"
-    );
+  const response = document.getElementById("titleResponse");
 
   let text = "";
 
@@ -1149,38 +762,26 @@ function titleChoice(title) {
   }
 
   if (title === "Mahan Insaan") {
-    text =
-      "Okay, don't let this get to your head. 😭";
+    text = "Okay, don't let this get to your head. 😭";
   }
 
   response.innerHTML = `
-
     <div class="card">
       ${text}
     </div>
-
-    <button onclick="show('s7')">
-      Next →
-    </button>
-
+    <button onclick="show('s7')">Next →</button>
   `;
-
 }
 
 
-/* =====================================================
-   PART 3
-===================================================== */
+/* ================= PART 3 ================= */
 
 function findingOne() {
 
   const response =
-    document.getElementById(
-      "findingOneResponse"
-    );
+    document.getElementById("findingOneResponse");
 
   response.innerHTML = `
-
     <div class="card">
       Objection denied. 😌
     </div>
@@ -1188,44 +789,31 @@ function findingOne() {
     <button onclick="show('s10')">
       Continue →
     </button>
-
   `;
-
 }
 
 
-/* =====================================================
-   BIRTHDAY CHECK
-===================================================== */
+/* ================= BIRTHDAY CHECK ================= */
 
 function checkBirthday() {
 
   const input =
-    document.getElementById(
-      "birthdayInput"
-    );
+    document.getElementById("birthdayInput");
 
   const error =
-    document.getElementById(
-      "birthdayError"
-    );
+    document.getElementById("birthdayError");
 
   const answer =
-    input.value
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, " ");
+    input.value.trim().toLowerCase().replace(/\s+/g, " ");
 
   const validAnswers = [
-
+    "20 august",
     "20 august",
     "20/08",
     "20-08",
     "20.08",
     "20 08"
-
   ];
-
 
   if (validAnswers.includes(answer)) {
 
@@ -1235,21 +823,15 @@ function checkBirthday() {
 
     launchCelebration();
 
-  }
-
-  else {
+  } else {
 
     error.textContent =
-      "Wrong 😑 Try again…";
-
+      "Hmm… that's not it 😭 Try again.";
   }
-
 }
 
 
-/* =====================================================
-   CONFETTI
-===================================================== */
+/* ================= CONFETTI ================= */
 
 function launchCelebration() {
 
@@ -1258,8 +840,7 @@ function launchCelebration() {
     const piece =
       document.createElement("div");
 
-    piece.className =
-      "confetti";
+    piece.className = "confetti";
 
     piece.style.left =
       Math.random() * 100 + "vw";
@@ -1281,17 +862,13 @@ function launchCelebration() {
     setTimeout(() => {
       piece.remove();
     }, 6500);
-
   }
 
   launchFireworks();
-
 }
 
 
-/* =====================================================
-   FIREWORKS
-===================================================== */
+/* ================= FIREWORKS ================= */
 
 function launchFireworks() {
 
@@ -1308,4 +885,57 @@ function launchFireworks() {
       for (let i = 0; i < 35; i++) {
 
         const particle =
-          document.createElemen
+          document.createElement("div");
+
+        particle.className = "firework";
+
+        particle.style.left =
+          centerX + "vw";
+
+        particle.style.top =
+          centerY + "vh";
+
+        const angle =
+          (Math.PI * 2 * i) / 35;
+
+        const distance =
+          60 + Math.random() * 100;
+
+        particle.style.setProperty(
+          "--x",
+          Math.cos(angle) * distance + "px"
+        );
+
+        particle.style.setProperty(
+          "--y",
+          Math.sin(angle) * distance + "px"
+        );
+
+        particle.style.background =
+          `hsl(${Math.random() * 360}, 100%, 70%)`;
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 1300);
+      }
+
+    }, burst * 350);
+  }
+}
+
+
+/* ================= FINAL REVEAL ================= */
+
+function finalReveal() {
+
+  show("finalScreen");
+
+  launchFireworks();
+}
+
+</script>
+
+</body>
+      </html>
